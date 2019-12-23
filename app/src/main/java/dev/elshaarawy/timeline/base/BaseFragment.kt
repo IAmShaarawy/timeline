@@ -1,0 +1,60 @@
+package dev.elshaarawy.timeline.base
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.annotation.CallSuper
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import dev.elshaarawy.timeline.BR
+import dev.elshaarawy.timeline.extensions.appViewModel
+
+/**
+ * @author Mohamed Elshaarawy on Dec 23, 2019.
+ */
+abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(@LayoutRes contentLayoutId: Int) :
+    Fragment(contentLayoutId) {
+
+    private lateinit var privateBinding: B
+
+    protected val binding: B
+        get() = if (isViewCreated) privateBinding
+        else throw IllegalStateException("binding should be not null at this state.")
+
+    private var isViewCreated = false
+
+    protected abstract val viewModel: VM
+
+    @CallSuper
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        isViewCreated = true
+        return if (::privateBinding.isInitialized) privateBinding.root
+        else run {
+            super.onCreateView(inflater, container, savedInstanceState)!!.also {
+                privateBinding = DataBindingUtil.bind(it)!!
+            }
+        }
+    }
+
+    @CallSuper
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            setVariable(BR.viewModel, viewModel)
+        }
+    }
+
+    @CallSuper
+    override fun onDestroyView() {
+        super.onDestroyView()
+        isViewCreated = false
+    }
+}
