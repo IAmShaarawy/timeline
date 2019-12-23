@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/timelineFragment"
+        android:icon="@drawable/ic_timeline_24dp"
+        android:title="Timeline" />
 
+    <item
+        android:id="@id/settingsFragment"
+        android:icon="@drawable/ic_settings_24dp"
+        android:title="Settings" />
 </menu>

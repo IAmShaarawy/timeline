@@ -8,6 +8,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import dev.elshaarawy.timeline.R
 import dev.elshaarawy.timeline.data.repositories.PreferencesRepository
 import dev.elshaarawy.timeline.databinding.ActivityAppBinding
@@ -28,11 +32,25 @@ class AppActivity : AppCompatActivity() {
             R.layout.activity_app
         )
     }
+    private val toolbar by lazy { binding.toolbar }
+    private val navController by lazy { findNavController(R.id.appNavHost) }
+    private val bottomNav by lazy { binding.bottomNavigationView }
+    private val appBarConfiguration by lazy { AppBarConfiguration(topLevelDestination) }
+    private val topLevelDestination by lazy {
+        setOf(
+            R.id.splashFragment,
+            R.id.loginFragment,
+            R.id.timelineFragment,
+            R.id.settingsFragment
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
-        binding
+        setSupportActionBar(toolbar)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        bottomNav.setupWithNavController(navController)
         observeViewModel()
     }
 
@@ -47,6 +65,10 @@ class AppActivity : AppCompatActivity() {
             overrideConfiguration.uiMode = uiMode
         }
         super.applyOverrideConfiguration(overrideConfiguration)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
     }
 
     private fun observeViewModel() {
