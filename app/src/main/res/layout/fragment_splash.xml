@@ -5,12 +5,11 @@
 
         <variable
             name="viewModel"
-            type="dev.elshaarawy.timeline.app.AppViewModel" />
+            type="dev.elshaarawy.timeline.features.splash.SplashViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_splash" />
 </layout>
