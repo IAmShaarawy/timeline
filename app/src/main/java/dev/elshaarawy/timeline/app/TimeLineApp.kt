@@ -1,6 +1,7 @@
 package dev.elshaarawy.timeline.app
 
 import android.app.Application
+import dev.elshaarawy.timeline.data.repositories.PreferencesRepository
 import dev.elshaarawy.timeline.injection.DatabaseModule
 import dev.elshaarawy.timeline.injection.RepositoriesModule
 import dev.elshaarawy.timeline.injection.ViewModelsModule
