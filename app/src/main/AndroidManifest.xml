@@ -12,7 +12,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".app.AppActivity">
+        <activity
+            android:name=".app.AppActivity"
+            android:theme="@style/AppTheme.splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
