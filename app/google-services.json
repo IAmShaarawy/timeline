@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "378522737057",
+    "firebase_url": "https://time-line-9cd02.firebaseio.com",
+    "project_id": "time-line-9cd02",
+    "storage_bucket": "time-line-9cd02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378522737057:android:b06665bacf144eca7993e0",
+        "android_client_info": {
+          "package_name": "dev.elshaarawy.timeline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378522737057-659chemr2v4pn0bpsufo71f6u5eljem9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.elshaarawy.timeline",
+            "certificate_hash": "20229760eed9625984f129684012e5b9cfc6e248"
+          }
+        },
+        {
+          "client_id": "378522737057-e2tbcfsqgkogneci8gaek7breh8mkht5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXYa8gpVx9peGvSvM7OPblSmaKXACPnqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378522737057-e2tbcfsqgkogneci8gaek7breh8mkht5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
