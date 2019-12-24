@@ -11,13 +11,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import dev.elshaarawy.timeline.BR
-import dev.elshaarawy.timeline.extensions.appViewModel
+import kotlinx.coroutines.*
 
 /**
  * @author Mohamed Elshaarawy on Dec 23, 2019.
  */
 abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(@LayoutRes contentLayoutId: Int) :
-    Fragment(contentLayoutId) {
+    Fragment(contentLayoutId), CoroutineScope by MainScope() {
 
     private lateinit var privateBinding: B
 
@@ -28,6 +28,8 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(@LayoutRes cont
     private var isViewCreated = false
 
     protected abstract val viewModel: VM
+
+    protected abstract fun VM.observeViewModel()
 
     @CallSuper
     override fun onCreateView(
@@ -50,11 +52,17 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(@LayoutRes cont
             lifecycleOwner = viewLifecycleOwner
             setVariable(BR.viewModel, viewModel)
         }
+        viewModel.observeViewModel()
     }
 
     @CallSuper
     override fun onDestroyView() {
         super.onDestroyView()
         isViewCreated = false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
     }
 }

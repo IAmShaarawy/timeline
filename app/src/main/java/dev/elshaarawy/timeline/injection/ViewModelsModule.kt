@@ -12,7 +12,7 @@ import org.koin.dsl.module
 object ViewModelsModule : () -> Module {
     override fun invoke(): Module = module {
         viewModel { AppViewModel(get()) }
-        viewModel { SplashViewModel() }
+        viewModel { SplashViewModel(get()) }
         viewModel { LoginViewModel() }
         viewModel { TimelineViewModel() }
         viewModel { SettingsViewModel() }

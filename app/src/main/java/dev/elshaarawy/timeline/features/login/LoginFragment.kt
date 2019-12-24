@@ -10,4 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layout.fragment_login) {
     override val viewModel: LoginViewModel by viewModel()
+    override fun LoginViewModel.observeViewModel() {
+
+    }
 }

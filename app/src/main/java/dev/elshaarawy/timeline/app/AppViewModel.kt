@@ -56,6 +56,6 @@ class AppViewModel(private val preferencesRepository: PreferencesRepository) : V
             R.id.splashFragment,
             R.id.loginFragment -> false
             else -> true
-        }.also { _isToolbarVisible.postValue(it) }
+        }.also { _isBottomNavViewVisible.postValue(it) }
     }
 }
