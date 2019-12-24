@@ -37,5 +37,10 @@
         android:id="@+id/settingsFragment"
         android:name="dev.elshaarawy.timeline.features.settings.SettingsFragment"
         android:label="@string/settings_title"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/app_navigation" />
+    </fragment>
 </navigation>

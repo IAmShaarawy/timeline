@@ -3,4 +3,7 @@
     <string name="settings_title">Settings</string>
     <string name="phone">Phone</string>
     <string name="login">Login</string>
+    <string name="switch_language">Switch Language</string>
+    <string name="switch_theme">Switch Theme</string>
+    <string name="logout">Logout</string>
 </resources>

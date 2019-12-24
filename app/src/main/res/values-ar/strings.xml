@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">تايم لاين</string>
-    <string name="settings_title">Settings</string>
+    <string name="settings_title">الإعدادات</string>
     <string name="phone">الهاتف</string>
     <string name="login">تسجيل</string>
+    <string name="switch_language">تبديل اللغه</string>
+    <string name="switch_theme">تبديل السمات</string>
+    <string name="logout">تسجيل خروج</string>
 </resources>
