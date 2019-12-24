@@ -13,7 +13,7 @@ object ViewModelsModule : () -> Module {
     override fun invoke(): Module = module {
         viewModel { AppViewModel(get()) }
         viewModel { SplashViewModel(get()) }
-        viewModel { LoginViewModel() }
+        viewModel { LoginViewModel(get()) }
         viewModel { TimelineViewModel() }
         viewModel { SettingsViewModel() }
     }
