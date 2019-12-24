@@ -3,10 +3,10 @@
     <item
         android:id="@id/timelineFragment"
         android:icon="@drawable/ic_timeline_24dp"
-        android:title="Timeline" />
+        android:title="@string/app_name" />
 
     <item
         android:id="@id/settingsFragment"
         android:icon="@drawable/ic_settings_24dp"
-        android:title="Settings" />
+        android:title="@string/settings_title" />
 </menu>

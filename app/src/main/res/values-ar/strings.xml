@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">مرحباً</string>
-    <string name="english">الانجليزيه</string>
-    <string name="arabic">العربيه</string>
+    <string name="app_name">تايم لاين</string>
+    <string name="settings_title">Settings</string>
+    <string name="phone">الهاتف</string>
+    <string name="login">تسجيل</string>
 </resources>
