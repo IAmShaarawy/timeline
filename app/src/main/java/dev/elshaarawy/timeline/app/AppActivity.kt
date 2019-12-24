@@ -25,6 +25,7 @@ import java.util.*
 
 class AppActivity : AppCompatActivity() {
     private val viewModel by viewModel<AppViewModel>()
+    // we use here repo due to the critical nature of accessing viewModels in attachBaseContext
     private val preferencesRepository by inject<PreferencesRepository>()
     private val binding by lazy {
         DataBindingUtil.setContentView<ActivityAppBinding>(
@@ -48,9 +49,9 @@ class AppActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
+        setBindingVariables()
         setSupportActionBar(toolbar)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        bottomNav.setupWithNavController(navController)
+        configureNavController()
         observeViewModel()
     }
 
@@ -69,6 +70,21 @@ class AppActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
+    }
+
+    private fun setBindingVariables() {
+        binding.apply {
+            viewModel = this@AppActivity.viewModel
+            lifecycleOwner = this@AppActivity
+        }
+    }
+
+    private fun configureNavController() {
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        bottomNav.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, des, _ ->
+            viewModel.onDestinationChange(des.id)
+        }
     }
 
     private fun observeViewModel() {
