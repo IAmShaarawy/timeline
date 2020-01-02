@@ -7,10 +7,12 @@ import dev.elshaarawy.timeline.injection.RepositoriesModule
 import dev.elshaarawy.timeline.injection.ViewModelsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import timber.log.Timber
 
 class TimeLineApp : Application() {
     override fun onCreate() {
         super.onCreate()
+        Timber.plant(Timber.DebugTree())
         setupKoin(this)
     }
 
