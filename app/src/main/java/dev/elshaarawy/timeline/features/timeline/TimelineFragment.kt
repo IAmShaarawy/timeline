@@ -12,8 +12,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class TimelineFragment :
     BaseFragment<FragmentTimelineBinding, TimelineViewModel>(R.layout.fragment_timeline) {
-    private val timelineAdapter = TimelineAdapter()
+
     override val viewModel: TimelineViewModel by viewModel()
+
+    private val timelineAdapter by lazy { TimelineAdapter(viewLifecycleOwner, viewModel) }
 
     override fun FragmentTimelineBinding.setupUI() {
         rvTimeline.apply {

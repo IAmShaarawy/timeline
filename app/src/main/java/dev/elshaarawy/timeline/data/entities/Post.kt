@@ -5,6 +5,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.PropertyName
 import com.google.firebase.firestore.model.value.ReferenceValue
+import dev.elshaarawy.timeline.extensions.getAsync
 
 /**
  * @author Mohamed Elshaarawy on Jan 03, 2020.
@@ -20,4 +21,8 @@ data class Post(
     val timeStamp: Timestamp? = null,
     @PropertyName("uuid")
     val uuid: DocumentReference? = null
-) : IdWrapper()
+) : IdWrapper() {
+    suspend fun userAsync(): User? = uuid?.getAsync()?.run {
+        toObject(User::class.java)?.withId<User>(id)
+    }
+}
