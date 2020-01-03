@@ -18,6 +18,9 @@ suspend fun CollectionReference.getAsync(source: Source = Source.DEFAULT): Query
 suspend fun DocumentReference.getAsync(source: Source = Source.DEFAULT): DocumentSnapshot =
     get(source).async()
 
+suspend fun Query.getAsync(source: Source = Source.DEFAULT): QuerySnapshot =
+    get(source).async()
+
 suspend fun <T> Task<T>.async(): T = withContext(Dispatchers.IO) {
     suspendCoroutine<T> { continuation ->
         addOnCompleteListener {

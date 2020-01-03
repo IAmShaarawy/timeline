@@ -14,7 +14,7 @@ object ViewModelsModule : () -> Module {
         viewModel { AppViewModel(get()) }
         viewModel { SplashViewModel(get()) }
         viewModel { LoginViewModel(get()) }
-        viewModel { TimelineViewModel() }
+        viewModel { TimelineViewModel(get()) }
         viewModel { (appViewModel: AppViewModel) -> SettingsViewModel(appViewModel, get(), get()) }
     }
 
