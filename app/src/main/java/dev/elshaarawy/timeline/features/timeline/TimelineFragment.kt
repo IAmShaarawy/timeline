@@ -1,13 +1,11 @@
 package dev.elshaarawy.timeline.features.timeline
 
-import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import dev.elshaarawy.timeline.R
 import dev.elshaarawy.timeline.base.BaseFragment
 import dev.elshaarawy.timeline.databinding.FragmentTimelineBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 /**
  * @author Mohamed Elshaarawy on Dec 23, 2019.
@@ -18,7 +16,10 @@ class TimelineFragment :
     override val viewModel: TimelineViewModel by viewModel()
 
     override fun FragmentTimelineBinding.setupUI() {
-
+        rvTimeline.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = timelineAdapter
+        }
     }
 
     override fun TimelineViewModel.observeViewModel() {

@@ -30,7 +30,7 @@ private class TimelineRepositoryImpl : TimelineRepository {
             .Builder()
             .setPageSize(PAGES_SIZE)
             .setEnablePlaceholders(true)
-            .setPrefetchDistance(PAGES_SIZE * 2)
+            .setPrefetchDistance(PAGES_SIZE / 2)
             .build()
 
         return LivePagedListBuilder(dataSourceFactory, pagingConfiguration).build()
