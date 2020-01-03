@@ -29,6 +29,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(@LayoutRes cont
 
     protected abstract val viewModel: VM
 
+    protected open fun B.setupUI(){}
     protected abstract fun VM.observeViewModel()
 
     @CallSuper
@@ -52,6 +53,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(@LayoutRes cont
             lifecycleOwner = viewLifecycleOwner
             setVariable(BR.viewModel, viewModel)
         }
+        binding.setupUI()
         viewModel.observeViewModel()
     }
 

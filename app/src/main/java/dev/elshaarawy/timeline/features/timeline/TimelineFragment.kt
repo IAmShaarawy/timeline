@@ -1,5 +1,7 @@
 package dev.elshaarawy.timeline.features.timeline
 
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import dev.elshaarawy.timeline.R
 import dev.elshaarawy.timeline.base.BaseFragment
@@ -12,10 +14,16 @@ import timber.log.Timber
  */
 class TimelineFragment :
     BaseFragment<FragmentTimelineBinding, TimelineViewModel>(R.layout.fragment_timeline) {
+    private val timelineAdapter = TimelineAdapter()
     override val viewModel: TimelineViewModel by viewModel()
+
+    override fun FragmentTimelineBinding.setupUI() {
+
+    }
+
     override fun TimelineViewModel.observeViewModel() {
         timelineLiveData.observe(viewLifecycleOwner, Observer {
-            Timber.e("Count ${it.loadedCount}")
+            timelineAdapter.submitList(it)
         })
     }
 }
