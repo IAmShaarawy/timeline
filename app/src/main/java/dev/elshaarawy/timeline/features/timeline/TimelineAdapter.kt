@@ -1,10 +1,10 @@
 package dev.elshaarawy.timeline.features.timeline
 
 import android.view.ViewGroup
+import androidx.databinding.Bindable
 import androidx.lifecycle.LifecycleOwner
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import dev.elshaarawy.timeline.data.entities.Post
 import dev.elshaarawy.timeline.features.timeline.viewholders.*
 
@@ -14,9 +14,9 @@ import dev.elshaarawy.timeline.features.timeline.viewholders.*
 class TimelineAdapter(
     private val lifecycleOwner: LifecycleOwner,
     private val timelineViewModel: TimelineViewModel
-) : PagedListAdapter<Post, ViewHolder>(COMPARATOR) {
+) : PagedListAdapter<Post, ViewHolder<*>>(COMPARATOR) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<*> =
         when (viewType) {
             VIEW_TYPE_LOADING -> EmptyViewHolder(parent, lifecycleOwner)
             VIEW_TYPE_TEXT -> TextViewHolder(parent, lifecycleOwner)
@@ -27,23 +27,19 @@ class TimelineAdapter(
 
 
     @Suppress("UNCHECKED_CAST")
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (holder is Bindable<*>) {
-            holder as Bindable<TimelineItemViewModel>
-            TimelineItemViewModel(
-                timelineViewModel,
-                currentList?.get(position)
-            ).also {
-                holder.bind(it)
-            }
+    override fun onBindViewHolder(holder: ViewHolder<*>, position: Int) {
+        holder as ViewHolder<TimelineItemViewModel>
+        TimelineItemViewModel(
+            timelineViewModel,
+            currentList?.get(position)
+        ).also {
+            holder.bind(it)
         }
     }
 
-    override fun onViewRecycled(holder: ViewHolder) {
+    override fun onViewRecycled(holder: ViewHolder<*>) {
         super.onViewRecycled(holder)
-        if (holder is Bindable<*>) {
-            holder.unBind()
-        }
+        holder.unBind()
     }
 
     override fun getItemViewType(position: Int): Int {
