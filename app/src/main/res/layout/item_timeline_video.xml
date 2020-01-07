@@ -38,7 +38,7 @@
 
             <ImageView
                 android:id="@+id/imgVideoPreview"
-                imgURL="@{viewModel.video}"
+                loadBitmap="@{viewModel.video}"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/video_img_height"
                 android:scaleType="centerCrop"

@@ -1,6 +1,8 @@
 package dev.elshaarawy.timeline.extensions
 
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.media.MediaMetadataRetriever
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +34,11 @@ fun <T : ViewDataBinding> ViewGroup.inflate(@LayoutRes layoutId: Int, lifecycleO
     ).apply {
         this.lifecycleOwner = lifecycleOwner
     }
+}
+
+@BindingAdapter("loadBitmap")
+fun ImageView.loadBitmap(bitmap: Bitmap?) {
+    setImageBitmap(bitmap)
 }
 
 /**
