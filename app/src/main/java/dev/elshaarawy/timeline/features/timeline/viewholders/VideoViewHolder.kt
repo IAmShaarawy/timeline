@@ -1,6 +1,9 @@
 package dev.elshaarawy.timeline.features.timeline.viewholders
 
+import android.content.Intent
+import android.net.Uri
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.Bindable
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -25,7 +28,9 @@ class VideoViewHolder private constructor(private val itemBinding: ItemTimelineV
         }
 
         viewModel.videoClick.shot(this) {
-            Timber.e("VIDEO")
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
+            intent.setDataAndType(Uri.parse(it), "video/mp4")
+            itemBinding.root.context.startActivity(intent)
         }
     }
 

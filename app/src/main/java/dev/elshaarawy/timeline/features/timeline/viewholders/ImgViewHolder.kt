@@ -1,5 +1,7 @@
 package dev.elshaarawy.timeline.features.timeline.viewholders
 
+import android.content.Intent
+import android.net.Uri
 import android.view.ViewGroup
 import androidx.databinding.Bindable
 import androidx.lifecycle.LifecycleOwner
@@ -22,8 +24,10 @@ class ImgViewHolder private constructor(private val itemBinding: ItemTimelineImg
             this.viewModel = viewModel
             lifecycleOwner = this@ImgViewHolder
         }
-        viewModel.imgClick.shot(this){
-            Timber.e("IMG")
+        viewModel.imgClick.shot(this) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
+            intent.setDataAndType(Uri.parse(it), "image/*")
+            itemBinding.root.context.startActivity(intent)
         }
     }
 
