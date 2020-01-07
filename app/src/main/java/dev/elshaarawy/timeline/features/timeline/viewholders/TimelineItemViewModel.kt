@@ -9,11 +9,13 @@ import dev.elshaarawy.timeline.data.entities.Post
 import dev.elshaarawy.timeline.extensions.launch
 import dev.elshaarawy.timeline.features.timeline.TimelineViewModel
 import kotlinx.coroutines.*
+import java.io.Closeable
 
 /**
  * @author Mohamed Elshaarawy on Jan 03, 2020.
  */
-class TimelineItemViewModel(parentViewModel: TimelineViewModel, private val post: Post?) {
+class TimelineItemViewModel(parentViewModel: TimelineViewModel, private val post: Post?) :
+    Closeable {
     val text: LiveData<String?> = MutableLiveData(post?.text)
     val img: LiveData<String?> = MutableLiveData(post?.img)
     private val _video = MutableLiveData<Bitmap>()
@@ -49,4 +51,8 @@ class TimelineItemViewModel(parentViewModel: TimelineViewModel, private val post
             }
             Unit
         }
+
+    override fun close() {
+
+    }
 }

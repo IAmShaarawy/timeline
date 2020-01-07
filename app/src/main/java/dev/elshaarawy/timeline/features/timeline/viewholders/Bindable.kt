@@ -5,4 +5,6 @@ package dev.elshaarawy.timeline.features.timeline.viewholders
  */
 interface Bindable<T> {
     fun bind(viewModel: T)
+
+    fun unBind() {}
 }

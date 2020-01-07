@@ -16,6 +16,10 @@ class EmptyViewHolder private constructor(private val itemBinding: ItemTimelineE
         itemBinding.viewModel = viewModel
     }
 
+    override fun unBind() {
+        itemBinding.viewModel.close()
+    }
+
     companion object : (ViewGroup, LifecycleOwner?) -> EmptyViewHolder {
         override fun invoke(parent: ViewGroup, lifecycleOwner: LifecycleOwner?): EmptyViewHolder =
             EmptyViewHolder(parent.inflate(R.layout.item_timeline_empty, lifecycleOwner))

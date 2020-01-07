@@ -28,14 +28,22 @@ class TimelineAdapter(
 
     @Suppress("UNCHECKED_CAST")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder as Bindable<TimelineItemViewModel>
-        TimelineItemViewModel(
-            timelineViewModel,
-            currentList?.get(position)
-        ).also {
-            holder.bind(it)
+        if (holder is Bindable<*>) {
+            holder as Bindable<TimelineItemViewModel>
+            TimelineItemViewModel(
+                timelineViewModel,
+                currentList?.get(position)
+            ).also {
+                holder.bind(it)
+            }
         }
+    }
 
+    override fun onViewRecycled(holder: ViewHolder) {
+        super.onViewRecycled(holder)
+        if (holder is Bindable<*>) {
+            holder.unBind()
+        }
     }
 
     override fun getItemViewType(position: Int): Int {

@@ -16,6 +16,10 @@ class VideoViewHolder private constructor(private val itemBinding: ItemTimelineV
         itemBinding.viewModel = viewModel
     }
 
+    override fun unBind() {
+        itemBinding.viewModel.close()
+    }
+
     companion object : (ViewGroup, LifecycleOwner) -> VideoViewHolder {
         override fun invoke(parent: ViewGroup, lifecycleOwner: LifecycleOwner): VideoViewHolder =
             VideoViewHolder(parent.inflate(R.layout.item_timeline_video, lifecycleOwner))
