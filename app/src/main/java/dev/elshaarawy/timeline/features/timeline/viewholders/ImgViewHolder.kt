@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.elshaarawy.timeline.R
 import dev.elshaarawy.timeline.databinding.ItemTimelineImgBinding
 import dev.elshaarawy.timeline.extensions.inflate
+import dev.elshaarawy.timeline.extensions.shot
+import timber.log.Timber
 
 /**
  * @author Mohamed Elshaarawy on Jan 03, 2020.
@@ -19,6 +21,9 @@ class ImgViewHolder private constructor(private val itemBinding: ItemTimelineImg
         itemBinding.apply {
             this.viewModel = viewModel
             lifecycleOwner = this@ImgViewHolder
+        }
+        viewModel.imgClick.shot(this){
+            Timber.e("IMG")
         }
     }
 

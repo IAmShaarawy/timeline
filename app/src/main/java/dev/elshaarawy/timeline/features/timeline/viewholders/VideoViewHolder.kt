@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.elshaarawy.timeline.R
 import dev.elshaarawy.timeline.databinding.ItemTimelineVideoBinding
 import dev.elshaarawy.timeline.extensions.inflate
+import dev.elshaarawy.timeline.extensions.shot
+import timber.log.Timber
 
 /**
  * @author Mohamed Elshaarawy on Jan 03, 2020.
@@ -20,6 +22,10 @@ class VideoViewHolder private constructor(private val itemBinding: ItemTimelineV
         itemBinding.apply {
             this.viewModel = viewModel
             lifecycleOwner = this@VideoViewHolder
+        }
+
+        viewModel.videoClick.shot(this) {
+            Timber.e("VIDEO")
         }
     }
 

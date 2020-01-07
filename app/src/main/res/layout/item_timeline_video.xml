@@ -21,7 +21,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:splitMotionEvents="true">
 
             <include
                 android:id="@+id/include"
@@ -54,6 +55,7 @@
                 loadBitmap="@{viewModel.video}"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/video_img_height"
+                android:onClick="@{()->viewModel.onVideoClick()}"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

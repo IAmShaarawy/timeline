@@ -38,6 +38,7 @@
             <ImageView
                 android:id="@+id/imgContent"
                 imgURL="@{viewModel.img}"
+                android:onClick="@{()->viewModel.onImageClick()}"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/video_img_height"
                 android:scaleType="centerCrop"

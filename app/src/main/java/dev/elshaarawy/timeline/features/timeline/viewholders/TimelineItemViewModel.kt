@@ -27,6 +27,12 @@ class TimelineItemViewModel(parentViewModel: TimelineViewModel, private val post
     private val _userImg = MutableLiveData<String>()
     val userImg: LiveData<String> = _userImg
 
+    private val _imgClick = MutableLiveData<Unit>()
+    val imgClick: LiveData<Unit> = _imgClick
+
+    private val _videoClick = MutableLiveData<Unit>()
+    val videoClick: LiveData<Unit> = _videoClick
+
     init {
         parentViewModel.launch {
             listOf(loadUserAsync(post), loadVideoThumbnailAsync(post)).awaitAll()
@@ -52,6 +58,8 @@ class TimelineItemViewModel(parentViewModel: TimelineViewModel, private val post
             Unit
         }
 
+    fun onImageClick() = _imgClick.postValue(Unit)
+    fun onVideoClick() = _videoClick.postValue(Unit)
     override fun close() {
 
     }
