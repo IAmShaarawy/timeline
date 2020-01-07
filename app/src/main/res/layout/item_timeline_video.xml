@@ -37,6 +37,19 @@
                 app:name="@{viewModel.userName}" />
 
             <ImageView
+                android:id="@+id/imgPlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="64dp"
+                android:translationZ="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include"
+                app:srcCompat="@drawable/ic_play_circle_outline_24dp" />
+
+            <ImageView
                 android:id="@+id/imgVideoPreview"
                 loadBitmap="@{viewModel.video}"
                 android:layout_width="0dp"
