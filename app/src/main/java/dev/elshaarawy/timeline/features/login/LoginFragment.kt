@@ -29,10 +29,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
                 activity!!,
                 object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     override fun onVerificationCompleted(p0: PhoneAuthCredential) {
-                        FirebaseAuth.getInstance().signInWithCredential(p0)
-                        findNavController().navigate(
-                            LoginFragmentDirections.actionLoginFragmentToTimelineFragment()
-                        )
+                        FirebaseAuth.getInstance().signInWithCredential(p0).addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                findNavController().navigate(
+                                    LoginFragmentDirections.actionLoginFragmentToTimelineFragment()
+                                )
+                            }
+                        }
                     }
 
                     override fun onVerificationFailed(p0: FirebaseException) {

@@ -1,5 +1,6 @@
 package dev.elshaarawy.timeline.features.timeline.viewholders
 
+import android.media.ThumbnailUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dev.elshaarawy.timeline.data.entities.Post
@@ -10,8 +11,10 @@ import dev.elshaarawy.timeline.features.timeline.TimelineViewModel
  * @author Mohamed Elshaarawy on Jan 03, 2020.
  */
 class TimelineItemViewModel(parentViewModel: TimelineViewModel, post: Post?) {
-    val text: LiveData<String> = MutableLiveData(post?.text ?: "Loading")
+    val text: LiveData<String?> = MutableLiveData(post?.text)
     val img: LiveData<String?> = MutableLiveData(post?.img)
+    val video: LiveData<String?> = MutableLiveData(post?.video)
+
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 

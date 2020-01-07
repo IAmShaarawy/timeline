@@ -95,7 +95,7 @@ private fun ImageView.loadLocal(drawable: Drawable, requestOptions: RequestOptio
 private fun ImageView.loadRemote(url: String?, requestOptions: RequestOptions) {
     Glide.with(this)
         .load(url)
-        .thumbnail(0.5f)
+        .thumbnail(0.1f)
         .apply(requestOptions)
         .into(this)
 }

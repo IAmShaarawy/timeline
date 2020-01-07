@@ -32,10 +32,9 @@ class TimelineAdapter(
         TimelineItemViewModel(
             timelineViewModel,
             currentList?.get(position)
-        )
-            .also {
-                holder.bind(it)
-            }
+        ).also {
+            holder.bind(it)
+        }
 
     }
 
