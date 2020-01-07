@@ -15,7 +15,7 @@ class TimelineFragment :
 
     override val viewModel: TimelineViewModel by viewModel()
 
-    private val timelineAdapter by lazy { TimelineAdapter(viewLifecycleOwner, viewModel) }
+    private val timelineAdapter by lazy { TimelineAdapter(viewModel) }
 
     override fun FragmentTimelineBinding.setupUI() {
         rvTimeline.apply {

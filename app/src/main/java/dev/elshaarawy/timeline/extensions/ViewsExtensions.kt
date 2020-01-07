@@ -24,16 +24,14 @@ fun View.isGone(isVisible: Boolean) {
     this.visibility = if (isVisible) View.VISIBLE else View.GONE
 }
 
-fun <T : ViewDataBinding> ViewGroup.inflate(@LayoutRes layoutId: Int, lifecycleOwner: LifecycleOwner? = null): T {
+fun <T : ViewDataBinding> ViewGroup.inflate(@LayoutRes layoutId: Int): T {
     val inflater = LayoutInflater.from(context)
     return DataBindingUtil.inflate<T>(
         inflater,
         layoutId,
         this,
         false
-    ).apply {
-        this.lifecycleOwner = lifecycleOwner
-    }
+    )
 }
 
 @BindingAdapter("loadBitmap")

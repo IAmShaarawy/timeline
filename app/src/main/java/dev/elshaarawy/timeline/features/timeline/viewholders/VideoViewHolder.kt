@@ -3,6 +3,7 @@ package dev.elshaarawy.timeline.features.timeline.viewholders
 import android.view.ViewGroup
 import androidx.databinding.Bindable
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import dev.elshaarawy.timeline.R
 import dev.elshaarawy.timeline.databinding.ItemTimelineVideoBinding
@@ -16,11 +17,14 @@ class VideoViewHolder private constructor(private val itemBinding: ItemTimelineV
 
     override fun bind(viewModel: TimelineItemViewModel) {
         super.bind(viewModel)
-        itemBinding.viewModel = viewModel
+        itemBinding.apply {
+            this.viewModel = viewModel
+            lifecycleOwner = this@VideoViewHolder
+        }
     }
 
-    companion object : (ViewGroup, LifecycleOwner) -> VideoViewHolder {
-        override fun invoke(parent: ViewGroup, lifecycleOwner: LifecycleOwner): VideoViewHolder =
-            VideoViewHolder(parent.inflate(R.layout.item_timeline_video, lifecycleOwner))
+    companion object : (ViewGroup) -> VideoViewHolder {
+        override fun invoke(parent: ViewGroup): VideoViewHolder =
+            VideoViewHolder(parent.inflate(R.layout.item_timeline_video))
     }
 }

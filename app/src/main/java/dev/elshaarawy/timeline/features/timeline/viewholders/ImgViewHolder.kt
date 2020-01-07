@@ -16,11 +16,14 @@ class ImgViewHolder private constructor(private val itemBinding: ItemTimelineImg
 
     override fun bind(viewModel: TimelineItemViewModel) {
         super.bind(viewModel)
-        itemBinding.viewModel = viewModel
+        itemBinding.apply {
+            this.viewModel = viewModel
+            lifecycleOwner = this@ImgViewHolder
+        }
     }
 
-    companion object : (ViewGroup, LifecycleOwner) -> ImgViewHolder {
-        override fun invoke(parent: ViewGroup, lifecycleOwner: LifecycleOwner): ImgViewHolder =
-            ImgViewHolder(parent.inflate(R.layout.item_timeline_img, lifecycleOwner))
+    companion object : (ViewGroup) -> ImgViewHolder {
+        override fun invoke(parent: ViewGroup): ImgViewHolder =
+            ImgViewHolder(parent.inflate(R.layout.item_timeline_img))
     }
 }

@@ -12,16 +12,15 @@ import dev.elshaarawy.timeline.features.timeline.viewholders.*
  * @author Mohamed Elshaarawy on Jan 03, 2020.
  */
 class TimelineAdapter(
-    private val lifecycleOwner: LifecycleOwner,
     private val timelineViewModel: TimelineViewModel
 ) : PagedListAdapter<Post, ViewHolder<*>>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<*> =
         when (viewType) {
-            VIEW_TYPE_LOADING -> EmptyViewHolder(parent, lifecycleOwner)
-            VIEW_TYPE_TEXT -> TextViewHolder(parent, lifecycleOwner)
-            VIEW_TYPE_IMG -> ImgViewHolder(parent, lifecycleOwner)
-            VIEW_TYPE_VIDEO -> VideoViewHolder(parent, lifecycleOwner)
+            VIEW_TYPE_LOADING -> EmptyViewHolder(parent)
+            VIEW_TYPE_TEXT -> TextViewHolder(parent)
+            VIEW_TYPE_IMG -> ImgViewHolder(parent)
+            VIEW_TYPE_VIDEO -> VideoViewHolder(parent)
             else -> throw IllegalStateException("Not handled state !")
         }
 

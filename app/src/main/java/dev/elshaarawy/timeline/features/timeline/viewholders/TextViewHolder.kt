@@ -16,11 +16,14 @@ class TextViewHolder private constructor(private val itemBinding: ItemTimelineTe
 
     override fun bind(viewModel: TimelineItemViewModel) {
         super.bind(viewModel)
-        itemBinding.viewModel = viewModel
+        itemBinding.apply {
+            this.viewModel = viewModel
+            lifecycleOwner = this@TextViewHolder
+        }
     }
 
-    companion object : (ViewGroup, LifecycleOwner) -> TextViewHolder {
-        override fun invoke(parent: ViewGroup, lifecycleOwner: LifecycleOwner): TextViewHolder =
-            TextViewHolder(parent.inflate(R.layout.item_timeline_text, lifecycleOwner))
+    companion object : (ViewGroup) -> TextViewHolder {
+        override fun invoke(parent: ViewGroup): TextViewHolder =
+            TextViewHolder(parent.inflate(R.layout.item_timeline_text))
     }
 }
