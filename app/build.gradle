@@ -28,6 +28,15 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8
     }
 
+    signingConfigs {
+        debug {
+            keyAlias 'timeline'
+            keyPassword 'timeline'
+            storeFile file('../debug.keystore')
+            storePassword 'timeline'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
